@@ -1,10 +1,16 @@
 {
     "type": "postgres",
-    "host": "localhost",
+    "host": "dbappmoviles.postgres.database.azure.com",
     "port": 5432,
     "username": "postgres",
-    "password": "postgres",
+    "password": "$GyTPH5%",
     "database": "vinyls",
+    "ssl": true,
+    "extra": {
+        "ssl": {
+            "rejectUnauthorized": false
+        }
+    },
     "synchronize": false,
     "logging": false,
     "entities": [
