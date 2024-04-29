@@ -68,7 +68,7 @@ jobs:
           app-settings-json: |
             {
               "DB_HOST": "dbappmoviles.postgres.database.azure.com",
-              "POSTGRES_PASSWORD" : "${{ secrets.POSTGRES_PASSWORD }}",
+              "POSTGRES_PASSWORD" : "${{ secrets.POSTGRES_PASSWORD }}"
             }
           
       - name: 'Deploy to Azure Web App'
