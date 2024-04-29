@@ -39,14 +39,14 @@ import { AlbumMusicianModule } from './albummusician/albummusician.module';
       host: process.env.DB_HOST || 'dbappmoviles.postgres.database.azure.com',
       port: 5432,
       username: 'postgres',
-      password: 'eP3X@32UoFik6A',
+      password: process.env.POSTGRES_PASSWORD || 'postgres',
       database: 'vinyls',
       entities: [Album, CollectorAlbum, Band, Collector, Comment, Musician, Performer, PerformerPrize, Prize, Track,],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
       migrations: [__dirname + '/migration/**/*{.ts,.js}'],
-      migrationsRun: false,
+      migrationsRun: true,
       ssl: true,
       extra: {
         ssl: {
