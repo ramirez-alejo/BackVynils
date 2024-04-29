@@ -60,17 +60,10 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6D122F5408CE43FD9CD33946B1593C03 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E0988706C90D4F47A1B2455409985E5A }}
 
-      - name: Set App Service Settings
-        uses: azure/appservice-settings@v1
-        with:
-          app-name: 'backendappmoviles'
-          slot-name: 'Production'
-          app-settings-json: |
-            {
-              "DB_HOST": "dbappmoviles.postgres.database.azure.com",
-              "POSTGRES_PASSWORD" : "${{ secrets.POSTGRES_PASSWORD }}"
-            }
-          
+      - name: Set App Service Settings 
+        run: |
+            az webapp config appsettings set --name backendappmoviles --resource-group myResourceGroup --settings DB_HOST=dbappmoviles.postgres.database.azure.com POSTGRES_PASSWORD="${{ secrets.POSTGRES_PASSWORD }}"
+            
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
